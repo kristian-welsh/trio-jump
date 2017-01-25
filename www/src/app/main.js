@@ -49,7 +49,10 @@ define(function (require) {
 	}
 	
 	function killChar(e) {
-		liveChars -= 1;
+		console.log(e.detail);
+		if(e.detail.living) {
+			liveChars -= 1;
+		}
 		if (liveChars === 0) {
 			endGame();
 		}
@@ -125,6 +128,7 @@ define(function (require) {
 		char1.tick();
 		char2.tick();
 		char3.tick();
+		
 		obstacle1.tick();
 		obstacle2.tick();
 		obstacle3.tick();
