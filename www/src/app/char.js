@@ -11,6 +11,7 @@ define(function (require) {
 			living = true,
 			jumping = false,
 			velocity = 0,
+			colour = "#FFFFFF",
 			
 			x = startX,
 			y = startY - CHAR_WIDTH,
@@ -26,7 +27,7 @@ define(function (require) {
 			}
 		};
 		
-		function draw(colour) {
+		this.draw = function() {
 			context.fillStyle = colour;
 			context.fillRect(x, y, CHAR_WIDTH, CHAR_WIDTH);
 		}
@@ -40,21 +41,18 @@ define(function (require) {
 					jumping = false;
 				}
 			}
-			draw("#FFFFFF");
 		};
 		
 		this.kill = function () {
-			draw("#CC0000");
+			colour = "#CC0000";
 			jumping = false;
 			living = false;
 			window.dispatchEvent(new Event("DIE", { detail: null }));
 		};
 		
 		this.reset = function () {
-			draw("#FFFFFF");
+			colour = "#FFFFFF";
 			living = true;
 		};
-		
-		draw("#FFFFFF");
 	};
 });

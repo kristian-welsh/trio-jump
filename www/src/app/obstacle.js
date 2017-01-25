@@ -6,5 +6,11 @@ define(function (require) {
 		this.tick = function () {
 			
 		};
+		this.draw = function () {
+			
+		};
+		this.reset = function () {
+			
+		};
 	};
 });
