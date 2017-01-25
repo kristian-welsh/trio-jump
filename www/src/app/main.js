@@ -67,9 +67,9 @@ define(function (require) {
 	}
 	
 	function initObstacles() {
-		obstacle1 = new Obstacle(1, char1);
-		obstacle2 = new Obstacle(2, char2);
-		obstacle3 = new Obstacle(3, char3);
+		obstacle1 = new Obstacle(1, char1, context);
+		obstacle2 = new Obstacle(2, char2, context);
+		obstacle3 = new Obstacle(3, char3, context);
 	}
 
 	function handleKeyUp(e) {
