@@ -38,18 +38,16 @@ define(function (require) {
 		obstacle1.reset();
 		obstacle2.reset();
 		obstacle3.reset();
-
-		liveChars = 3;
 		score = 0;
 		scoreText = "0";
 	}
 	
 	function endGame() {
+		liveChars = 3;
 		setTimeout(newGame, 3 * 1000);
 	}
 	
 	function killChar(e) {
-		console.log(e.detail);
 		if(e.detail.living) {
 			liveChars -= 1;
 		}

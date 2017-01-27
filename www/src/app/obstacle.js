@@ -31,7 +31,6 @@ define(function (require) {
 		}
 		
 		this.tick = function () {
-			console.log(x);
 			x -= speed;
 			if (x + WIDTH < 0) {
 				this.reset();
