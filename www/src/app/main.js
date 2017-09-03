@@ -23,15 +23,36 @@ define(function (require) {
     scoreObj,
 		
 		liveChars = 3,
-		score = 0,
-		scoreText = "0",
-		
-		scoreDisplay,
-		timer,
 		
 		canvas = document.getElementById("canvas"),
 		context = canvas.getContext("2d");
 	
+	
+	function constructor() {
+		Globals.STAGE_HEIGHT = canvas.height;
+		Globals.STAGE_WIDTH = canvas.width;
+
+		initChars();
+		initObstacles();
+    
+		seperator1 = new Seperator(1, context);
+    seperator2 = new Seperator(2, context);
+		seperator3 = new Seperator(3, context);
+    
+    scoreObj = new Score(context);
+
+		window.addEventListener("SCORE", scorePoint);
+		window.addEventListener("DIE", killChar);
+		window.onkeyup = handleKeyUp;
+    
+    var drawable = [char1, char2, char3, obstacle1, obstacle2, obstacle3, seperator1, seperator2, seperator3, scoreObj];
+    var tickable = [char1, char2, char3, obstacle1, obstacle2, obstacle3];
+    
+    
+    var clock = new GameClock(drawable, tickable, context);
+    
+		clock.start();
+	}
 	
 	function initChars() {
 		char1 = new Char(10, Globals.STAGE_HEIGHT / 3 - Globals.DIVIDER_WIDTH, context);
@@ -71,8 +92,6 @@ define(function (require) {
 		obstacle1.reset();
 		obstacle2.reset();
 		obstacle3.reset();
-		score = 0;
-		scoreText = "0";
     scoreObj.resetScore();
 	}
 	
@@ -88,32 +107,6 @@ define(function (require) {
 		if (liveChars === 0) {
 			endGame();
 		}
-	}
-	
-	function constructor() {
-		Globals.STAGE_HEIGHT = canvas.height;
-		Globals.STAGE_WIDTH = canvas.width;
-
-		initChars();
-		initObstacles();
-    
-		seperator1 = new Seperator(1, context);
-    seperator2 = new Seperator(2, context);
-		seperator3 = new Seperator(3, context);
-    
-    scoreObj = new Score(context);
-
-		window.addEventListener("SCORE", scorePoint);
-		window.addEventListener("DIE", killChar);
-		window.onkeyup = handleKeyUp;
-    
-    var drawable = [char1, char2, char3, obstacle1, obstacle2, obstacle3, seperator1, seperator2, seperator3, scoreObj];
-    var tickable = [char1, char2, char3, obstacle1, obstacle2, obstacle3];
-    
-    
-    var clock = new GameClock(drawable, tickable, context);
-    
-		clock.start();
 	}
 	
 	constructor();

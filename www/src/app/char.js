@@ -35,14 +35,20 @@ define(function (require) {
 		
 		this.tick = function () {
 			if (jumping) {
-				velocity += GRAVITY;
-				this.y += velocity;
+        velocity += GRAVITY;
+        this.y += velocity;
 				if (this.y >= groundPos) {
-					this.y = groundPos;
-					jumping = false;
-				}
+          this.y = groundPos;
+          jumping = false;
+        }
 			}
 		};
+
+    function accellerate() {
+    }
+    
+    function land() {
+    }
 		
 		this.kill = function () {
 			// event must dispatch before living changes
